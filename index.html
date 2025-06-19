@@ -4,7 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BeawarHub.com | Beawar Ka Digital Hub</title>
-  <style>
+  <style>#popular-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.area-item {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 250px;
+  text-align: center;
+}
+
+.area-item img {
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.area-item h4 {
+  margin: 10px 0 5px;
+  color: #2e86de;
+}
+
+.area-item p {
+  font-size: 14px;
+  color: #555;
+}
+
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
     header { background: #2e86de; color: white; padding: 20px 0; text-align: center; }
     nav { background: #1b4f72; padding: 10px; text-align: center; }
@@ -35,20 +68,46 @@
     <h2>Welcome to BeawarHub</h2>
     <p>Yeh platform Beawar ki sari zaroori jankariyon ka hub banega. Chahe vo area list ho, shops ka data ho, ya latest news. Sab kuch milega yahan.</p>
 
-    <h3>Popular Areas Covered</h3>
-    <ul>
-      <li>Ajmer Road</li>
-      <li>Chavni Puri</li>
-      <li>Pali Market</li>
-      <li>Prabhu Ki Bagiya</li>
-      <li>Dungri Road</li>
-      <li>Ajmeri Gate</li>
-      <li>Mevadi Gate</li>
-      <li>Chand Gate</li>
-      <li>Suraj Pol</li>
-    </ul>
+   <h3>Popular Areas in Beawar</h3>
+<div id="popular-areas">
+  <div class="area-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Ajmer_Road_Beawar.jpg" alt="Ajmer Road" />
+    <h4>Ajmer Road</h4>
+    <p>Beawar ka sabse vyast aur vibrant market area, jahan har tarah ke shops aur eateries milte hain.</p>
   </div>
+  <div class="area-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Ajmeri_Gate_Beawar.jpg" alt="Ajmeri Gate" />
+    <h4>Ajmeri Gate</h4>
+    <p>Beawar ka prasiddh historical gate, jo sheher ki purani virasat ko darshata hai.</p>
+  </div>
+  <div class="area-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Chand_Gate_Beawar.jpg" alt="Chand Gate" />
+    <h4>Chand Gate</h4>
+    <p>Ek purana gate jo Beawar ki shuruaat ka pratinidhitva karta hai.</p>
+  </div>
+  <div class="area-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Suraj_Pol_Beawar.jpg" alt="Suraj Pol" />
+    <h4>Suraj Pol</h4>
+    <p>Beawar ke historic gates me se ek, jahan local bazaars aur street food ke liye jana jata hai.</p>
+  </div>
+  <div class="area-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Mevadi_Gate_Beawar.jpg" alt="Mevadi Gate" />
+    <h4>Mevadi Gate</h4>
+    <p>Beawar ka ek prasiddh gate, aas paas kai mandir aur cultural spots hain.</p>
+  </div>
+  <div class="area-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Subhash_Udhyan_Beawar.jpg" alt="Subhash Udhyan" />
+    <h4>Subhash Udhyan</h4>
+    <p>Ek prasiddh park, jo sheher ke logon ke liye ek shanti ka sthal hai.</p>
+  </div>
+  <div class="area-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Dungri_Mata_Mandir_Beawar.jpg" alt="Dungri Mata Mandir" />
+    <h4>Dungri Mata Mandir</h4>
+    <p>Ek prasiddh mandir, jo sheher ke logon ke liye ek shakti ka sthal hai.</p>
+  </div>
+</div>
 
+  
   <footer class="footer">
     <p>&copy; 2025 BeawarHub.com | Developed by Gagan Gahlot & Chotu G</p>
   </footer>
