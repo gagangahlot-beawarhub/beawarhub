@@ -2,162 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BeawarHub.com | Beawar Ka Digital Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0; padding: 0;
-      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      background: linear-gradient(135deg, #f0f4f7, #ffffff);
       color: #333;
     }
+
     header {
-      background: linear-gradient(90deg, #1e90ff, #00bfff);
-      color: white;
-      padding: 25px 0;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
-    }
-    nav {
-      background: #007acc;
-      padding: 15px 0;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 122, 204, 0.2);
-    }
-    nav a {
-      color: white;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      transition: color 0.3s ease, border-bottom 0.3s ease;
-      padding-bottom: 5px;
-      cursor: pointer;
-    }
-    nav a:hover {
-      color: #ff5722;
-      border-bottom: 2px solid #ff5722;
-    }
-    .hero {
-      background: url('https://source.unsplash.com/1600x400/?rajasthan,city') no-repeat center center/cover;
+      background: url('https://source.unsplash.com/1600x500/?rajasthan,fort') center center/cover no-repeat;
       height: 350px;
-      border-radius: 0 0 15px 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 25px;
+      position: relative;
     }
-    .content {
-      padding: 30px 25px;
-      background: white;
-      max-width: 1000px;
-      margin: auto;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
     }
-    h2, h3 {
-      color: #007acc;
-      margin-bottom: 15px;
+
+    header h1 {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 40px;
+      text-align: center;
     }
-    #popular-areas {
+
+    header p {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #f1f1f1;
+      font-size: 18px;
+      width: 90%;
+      text-align: center;
+    }
+
+    nav {
+      background: #1e88e5;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 500;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeb3b;
+      border-bottom: 2px solid #ffeb3b;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .section h2 {
+      color: #1e88e5;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .areas {
       display: flex;
       flex-wrap: wrap;
       gap: 25px;
       justify-content: center;
     }
-    .area-item {
+
+    .card {
       background: #f9f9f9;
+      width: 280px;
       border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      width: 260px;
-      text-align: center;
-      transition: transform 0.3s ease;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .area-item:hover {
+
+    .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
-    .area-item img {
+
+    .card img {
       width: 100%;
-      height: 160px;
-      border-radius: 12px;
+      height: 170px;
       object-fit: cover;
-      margin-bottom: 12px;
     }
-    .footer {
-      background: #1e90ff;
+
+    .card h4 {
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+    }
+
+    footer {
+      background: #1e88e5;
       color: white;
       text-align: center;
-      padding: 15px 0;
+      padding: 20px;
       margin-top: 40px;
-      border-radius: 0 0 15px 15px;
-      box-shadow: 0 -4px 12px rgba(30, 144, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .areas {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      header p {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>BeawarHub.com</h1>
-    <p>Beawar ka apna digital adda — jahan mile sab latest updates, popular jagahen, dukaanon ki jankari, aur bhi bahut kuch, ek hi jagah!</p>
+    <p>Beawar ka apna digital adda — sabhi jankariyon, jagahon aur local updates ke saath!</p>
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="map.html">Map</a>
-    <a href="#shops">Shops</a>
-    <a href="#news">News</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="#contact">Contact</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="map.html">Map</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 
-  <div class="hero"></div>
-
-  <div class="content" id="home">
+  <section class="section" id="home">
     <h2>Welcome to BeawarHub</h2>
-    <p>Yeh platform Beawar ki sari zaroori jankariyon ka hub banega. Chahe vo area list ho, shops ka data ho, ya latest news. Sab kuch milega yahan.</p>
+    <p>Ye platform banaya gaya hai Beawar city ko digitally represent karne ke liye. Yahan tumhe milega Beawar ke famous areas, market places, updates, aur local culture ka ek online hub.</p>
+  </section>
 
-    <h3>Popular Areas in Beawar</h3>
-    <div id="popular-areas">
-      <div class="area-item">
+  <section class="section" id="areas">
+    <h2>Popular Areas in Beawar</h2>
+    <div class="areas">
+      <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Ajmer_Road_Beawar.jpg" alt="Ajmer Road" />
         <h4>Ajmer Road</h4>
-        <p>Beawar ka sabse vyast aur vibrant market area, jahan har tarah ke shops aur eateries milte hain.</p>
       </div>
-      <div class="area-item">
+      <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Ajmeri_Gate_Beawar.jpg" alt="Ajmeri Gate" />
         <h4>Ajmeri Gate</h4>
-        <p>Beawar ka prasiddh historical gate, jo sheher ki purani virasat ko darshata hai.</p>
       </div>
-      <div class="area-item">
+      <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Chand_Gate_Beawar.jpg" alt="Chand Gate" />
         <h4>Chand Gate</h4>
-        <p>Ek purana gate jo Beawar ki shuruaat ka pratinidhitva karta hai.</p>
       </div>
-      <div class="area-item">
+      <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Suraj_Pol_Beawar.jpg" alt="Suraj Pol" />
         <h4>Suraj Pol</h4>
-        <p>Beawar ke historic gates me se ek, jahan local bazaars aur street food ke liye jana jata hai.</p>
       </div>
-      <div class="area-item">
+      <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Mevadi_Gate_Beawar.jpg" alt="Mevadi Gate" />
         <h4>Mevadi Gate</h4>
-        <p>Beawar ka ek prasiddh gate, aas paas kai mandir aur cultural spots hain.</p>
       </div>
-      <div class="area-item">
+      <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Subhash_Udhyan_Beawar.jpg" alt="Subhash Udhyan" />
         <h4>Subhash Udhyan</h4>
-        <p>Ek prasiddh park, jo sheher ke logon ke liye ek shanti ka sthal hai.</p>
-      </div>
-      <div class="area-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Dungri_Mata_Mandir_Beawar.jpg" alt="Dungri Mata Mandir" />
-        <h4>Dungri Mata Mandir</h4>
-        <p>Ek prasiddh mandir, jo sheher ke logon ke liye ek shakti ka sthal hai.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <footer class="footer">
-    <p>&copy; 2025 BeawarHub.com | Developed by Gagan Gahlot & Chotu G</p>
+  <footer>
+    <p>&copy; 2025 BeawarHub.com | Made with ❤️ by Gagan Gahlot & Chotu G</p>
   </footer>
+
 </body>
 </html>
