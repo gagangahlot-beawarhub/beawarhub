@@ -2,85 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery | BeawarHub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f9fbfc;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(to right, #1e88e5, #42a5f5);
-      padding: 30px 20px;
-      text-align: center;
-      color: white;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    }
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .gallery {
-      max-width: 1200px;
-      margin: 40px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 0 20px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.07);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-    }
-    a.back-link {
-      display: inline-block;
-      margin-top: 15px;
-      color: #fff;
-      text-decoration: underline;
-    }
-    footer {
-      background: #1e88e5;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 50px;
-    }
-    @media (max-width: 600px) {
-      h1 { font-size: 26px; }
-      .gallery img { height: 180px; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeawarHub - Historic Gates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>📸 Beawar Gallery</h1>
-    <p>Beawar ke yaadon, jagahon aur khoobsurti ko ek jagah pe sajaya gaya hai yahan.</p>
-    <a href="index.html" class="back-link">← Back to Home</a>
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-red-800 text-white py-4 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">BeawarHub</h1>
+      <nav class="space-x-4">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Gallery</a>
+        <a href="#" class="hover:underline">Contact</a>
+      </nav>
+    </div>
   </header>
-  <div class="gallery">
-    <img src="images/ajmer_road.jpg" alt="Ajmer Road Beawar" />
-    <img src="images/ajmeri_gate.jpg" alt="Ajmeri Gate Beawar" />
-    <img src="images/chand_gate.jpg" alt="Chand Gate Beawar" />
-    <img src="images/suraj_pol.jpg" alt="Suraj Pol Beawar" />
-    <img src="images/mevadi_gate.jpg" alt="Mevadi Gate Beawar" />
-    <img src="images/subhash_udhyan.jpg" alt="Subhash Udhyan" />
-    <img src="images/dungri_mata_mandir.jpg" alt="Dungri Mata Mandir" />
-    <img src="images/mahadev_chhatri.jpg" alt="Mahadev Ji Ki Chhatri" />
-  </div>
-  <footer>
-    <p>&copy; 2025 BeawarHub.com | Created with 💙 by Gagan Gahlot & Chotu G</p>
+
+  <!-- Hero Section with Historic Gates Gallery -->
+  <section class="py-10 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Beawar ke Mashhoor Darwaze</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Surajpol Gate -->
+        <div class="overflow-hidden rounded-xl shadow hover:shadow-xl transition">
+          <img src="images/surajpol gate.jpeg" alt="Surajpol Gate" class="w-full h-72 object-cover hover:scale-105 transition duration-500" />
+          <div class="p-2 text-center bg-gray-100">Surajpol Gate</div>
+        </div>
+        
+        <!-- Ajmeri Gate -->
+        <div class="overflow-hidden rounded-xl shadow hover:shadow-xl transition">
+          <img src="images/ajmeri gate.jpeg" alt="Ajmeri Gate" class="w-full h-72 object-cover hover:scale-105 transition duration-500" />
+          <div class="p-2 text-center bg-gray-100">Ajmeri Gate</div>
+        </div>
+        
+        <!-- Mewadi Gate -->
+        <div class="overflow-hidden rounded-xl shadow hover:shadow-xl transition">
+          <img src="images/mewadi gate.jpeg" alt="Mewadi Gate" class="w-full h-72 object-cover hover:scale-105 transition duration-500" />
+          <div class="p-2 text-center bg-gray-100">Mewadi Gate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-red-800 text-white text-center py-4 mt-10">
+    © 2025 BeawarHub. All rights reserved.
   </footer>
+
 </body>
 </html>
