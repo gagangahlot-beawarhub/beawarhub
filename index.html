@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BeawarHub.com | Beawar Ka Digital Hub</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
   <style>
@@ -140,6 +140,73 @@
       margin-top: 40px;
     }
 
+    /* Login Modal styles */
+    #loginModal {
+      display: block;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #loginModal .modal-content {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      max-width: 350px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    #loginModal h2 {
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+      color: #1e88e5;
+    }
+
+    #loginModal input[type="text"],
+    #loginModal input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 12px 0;
+      border: 1.8px solid #1e88e5;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    #loginModal input[type="text"]:focus,
+    #loginModal input[type="password"]:focus {
+      border-color: #ffeb3b;
+    }
+
+    #loginModal button {
+      width: 100%;
+      padding: 12px;
+      background: #1e88e5;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    #loginModal button:hover {
+      background: #1565c0;
+    }
+
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
@@ -216,6 +283,33 @@
   <footer>
     <p>&copy; 2025 BeawarHub.com | Made with ❤️ by Gagan Gahlot & Chotu G</p>
   </footer>
+
+  <!-- Login Modal -->
+  <div id="loginModal">
+    <div class="modal-content">
+      <h2>Login to BeawarHub</h2>
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="User ID" required autocomplete="off" />
+        <input type="password" name="password" placeholder="Password" required autocomplete="off" />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').onsubmit = function(e) {
+      e.preventDefault();
+      const username = this.username.value.trim();
+      const password = this.password.value.trim();
+
+      if(username === '8209105937' && password === 'g1a2g3a4n5') {
+        alert('Welcome, ' + username + '! Login successful.');
+        document.getElementById('loginModal').style.display = 'none';
+      } else {
+        alert('Invalid User ID or Password. Please try again.');
+      }
+    };
+  </script>
 
 </body>
 </html>
