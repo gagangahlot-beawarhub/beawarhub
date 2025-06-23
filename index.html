@@ -76,7 +76,6 @@
     .hero h2 {
       font-size: 40px;
       margin-bottom: 20px;
-      animation: fadeSlide 1.8s ease-out;
     }
 
     .hero p {
@@ -84,7 +83,6 @@
       max-width: 700px;
       margin: 0 auto;
       line-height: 1.6;
-      animation: fadeSlide 2.2s ease-out;
     }
 
     .info {
@@ -106,6 +104,20 @@
       line-height: 1.7;
       color: #444;
     }
+
+    .share-buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .whatsapp { background-color: #25D366; }
+    .telegram { background-color: #0088cc; }
+    .facebook { background-color: #1877f2; }
 
     footer {
       background-color: #1e88e5;
@@ -159,7 +171,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <h2>Welcome to BeawarHub</h2>
-    <p>Explore Beawar digitally — Discover culture, places, markets & more at your fingertips.</p>
+    <p>Explore Beawar digitally — Discover culture, places, and updates at your fingertips.</p>
   </section>
 
   <!-- Info Section -->
@@ -170,6 +182,24 @@
       and landmarks like Prabhu Ki Bagiya, Beawar is a blend of tradition and growth. BeawarHub is your digital platform 
       to explore everything from shops to updates, places to events — all in one hub!
     </p>
+  </section>
+
+  <!-- Share Section -->
+  <section class="info">
+    <h3>Share BeawarHub</h3>
+    <p>Share this website with your friends and family!</p>
+    <div class="share-buttons">
+      <a href="https://wa.me/?text=Check%20out%20BeawarHub%20https://gagangahlot.github.io/BeawarHub/" target="_blank" class="whatsapp">WhatsApp</a>
+      <a href="https://t.me/share/url?url=https://gagangahlot.github.io/BeawarHub/&text=Check%20out%20BeawarHub" target="_blank" class="telegram">Telegram</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://gagangahlot.github.io/BeawarHub/" target="_blank" class="facebook">Facebook</a>
+    </div>
+  </section>
+
+  <!-- QR Code Section -->
+  <section class="info">
+    <h3>Scan to Visit</h3>
+    <p>Scan this QR Code to open BeawarHub on your phone.</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://gagangahlot.github.io/BeawarHub/" alt="BeawarHub QR Code" style="margin-top: 15px;">
   </section>
 
   <!-- Footer -->
