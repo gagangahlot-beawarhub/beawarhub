@@ -2,287 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BeawarHub.com | Beawar Ka Digital Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BeawarHub Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f0f4f7, #ffffff);
-      color: #333;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
     }
-
     header {
-      background: url('https://source.unsplash.com/1600x500/?rajasthan,fort') center center/cover no-repeat;
-      height: 350px;
-      position: relative;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    header h1 {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 40px;
-      text-align: center;
-    }
-
-    header p {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #f1f1f1;
-      font-size: 18px;
-      width: 90%;
-      text-align: center;
-    }
-
-    nav {
-      background: #1e88e5;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background-color: #1e88e5;
+      padding: 15px 30px;
+      color: white;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
-
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
+    header h1 {
+      margin: 0;
+      font-size: 24px;
     }
-
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
-      margin: 0 20px;
-      font-weight: 500;
+      font-weight: 600;
+      margin-left: 20px;
       font-size: 16px;
-      transition: 0.3s;
     }
-
     nav a:hover {
-      color: #ffeb3b;
-      border-bottom: 2px solid #ffeb3b;
-    }
-
-    .login-btn {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #fff;
-      color: #1e88e5;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 5px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .section {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .section h2 {
-      color: #1e88e5;
-      margin-bottom: 20px;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .areas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 25px;
-      justify-content: center;
-    }
-
-    .card {
-      background: #f9f9f9;
-      width: 280px;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .card img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-    }
-
-    .card h4 {
-      padding: 15px;
-      text-align: center;
-      font-size: 18px;
-      color: #333;
-    }
-
-    .login-popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-    }
-
-    .login-popup input {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    .login-popup button {
-      background: #1e88e5;
-      color: white;
-      padding: 10px;
-      border: none;
-      width: 100%;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-
-    footer {
-      background: #1e88e5;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="map.html">Map</a></li>
-      <li><a href="#areas">Areas</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="login-btn" onclick="showLogin()">Login</button>
-  </nav>
-
-  <div class="overlay" id="overlay"></div>
-
-  <div class="login-popup" id="loginPopup">
-    <h3 style="margin-bottom: 10px;">Login to BeawarHub</h3>
-    <input type="text" id="userid" placeholder="User ID (Phone)" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="loginUser()">Login</button>
-  </div>
-
   <header>
-    <h1>BeawarHub.com</h1>
-    <p>Beawar ka apna digital adda — sabhi jankariyon, jagahon aur local updates ke saath!</p>
+    <h1>BeawarHub</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
   </header>
 
-  <section class="section" id="home">
-    <h2>Welcome to BeawarHub</h2>
-    <p>Ye platform banaya gaya hai Beawar city ko digitally represent karne ke liye. Yahan tumhe milega Beawar ke famous areas, market places, updates, aur local culture ka ek online hub.</p>
-  </section>
-
-  <section class="section" id="areas">
-    <h2>Popular Areas in Beawar</h2>
-    <div class="areas">
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Ajmer_Road_Beawar.jpg" alt="Ajmer Road" />
-        <h4>Ajmer Road</h4>
-      </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Ajmeri_Gate_Beawar.jpg" alt="Ajmeri Gate" />
-        <h4>Ajmeri Gate</h4>
-      </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Chand_Gate_Beawar.jpg" alt="Chand Gate" />
-        <h4>Chand Gate</h4>
-      </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Suraj_Pol_Beawar.jpg" alt="Suraj Pol" />
-        <h4>Suraj Pol</h4>
-      </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Mevadi_Gate_Beawar.jpg" alt="Mevadi Gate" />
-        <h4>Mevadi Gate</h4>
-      </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Subhash_Udhyan_Beawar.jpg" alt="Subhash Udhyan" />
-        <h4>Subhash Udhyan</h4>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 BeawarHub.com | Made with ❤️ by Gagan Gahlot & Chotu G</p>
-  </footer>
-
-  <script>
-    function showLogin() {
-      document.getElementById('loginPopup').style.display = 'block';
-      document.getElementById('overlay').style.display = 'block';
-    }
-
-    function loginUser() {
-      const uid = document.getElementById('userid').value;
-      const pass = document.getElementById('password').value;
-
-      if(uid === "8209105937" && pass === "g1a2g3a4n5") {
-        alert("Login successful!");
-        document.getElementById('loginPopup').style.display = 'none';
-        document.getElementById('overlay').style.display = 'none';
-      } else {
-        alert("Invalid User ID or Password");
-      }
-    }
-  </script>
-
+  <main>
+    <section style="padding: 40px; text-align: center;">
+      <h2>Welcome to BeawarHub</h2>
+      <p>Yahan aap Beawar ki sari important jagah, news aur updates dekh sakte hain.</p>
+    </section>
+  </main>
 </body>
 </html>
