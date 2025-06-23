@@ -18,12 +18,6 @@
       padding: 20px 40px;
       color: white;
       text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      margin: 0;
-      font-weight: 600;
-      font-size: 28px;
     }
     a.back-link {
       display: inline-block;
@@ -31,164 +25,84 @@
       color: #1e88e5;
       text-decoration: none;
       font-weight: 600;
-      font-size: 16px;
-      transition: color 0.3s ease;
     }
-    a.back-link:hover {
-      color: #005bb5;
-    }
-
     .products-container {
-      max-width: 1200px;
-      margin: 0 auto 60px;
       display: grid;
-      grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-      gap: 25px;
-      padding: 0 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 20px;
     }
-
     .product-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .product-image {
-      width: 100%;
-      height: 180px;
+    .product-card img {
+      max-width: 100%;
+      height: 160px;
       object-fit: cover;
-      border-bottom: 1px solid #ddd;
+      border-radius: 4px;
     }
-
-    .product-details {
-      padding: 15px 20px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-name {
-      font-weight: 700;
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #1e88e5;
-    }
-
-    .product-price {
-      font-weight: 600;
-      font-size: 16px;
-      color: #388e3c;
-      margin-bottom: 12px;
-    }
-
-    .product-description {
-      font-size: 14px;
-      color: #555;
-      flex-grow: 1;
-      margin-bottom: 15px;
-    }
-
     .order-btn {
-      align-self: flex-start;
       background: #1e88e5;
       color: white;
-      padding: 10px 16px;
       border: none;
+      padding: 10px 16px;
+      margin-top: 10px;
       border-radius: 6px;
       cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+    .qr-section {
+      margin: 60px auto;
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+    }
+    .qr-section img {
+      width: 200px;
+      margin: 20px 0;
+    }
+    .qr-section a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
       text-decoration: none;
-    }
-    .order-btn:hover {
-      background: #0d5ec9;
-    }
-
-    @media(max-width: 600px) {
-      .products-container {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
-      }
-      header h1 {
-        font-size: 24px;
-      }
-      a.back-link {
-        margin: 12px 20px;
-      }
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>BeawarHub Products</h1>
   </header>
-
   <a href="index.html" class="back-link">&larr; Back to Home</a>
 
-  <main class="products-container">
-
-    <!-- Product 1 -->
+  <div class="products-container">
     <div class="product-card">
-      <img src="https://via.placeholder.com/300x180?text=Product+1" alt="Product 1" class="product-image" />
-      <div class="product-details">
-        <div>
-          <h2 class="product-name">Ayurvedic Herbal Oil</h2>
-          <p class="product-price">₹250</p>
-          <p class="product-description">Natural herbal oil for skin nourishment and hair health. Pure & chemical-free.</p>
-        </div>
-        <a href="tel:+918209105937" class="order-btn">Order Now</a>
-      </div>
+      <img src="https://via.placeholder.com/300x180?text=Herbal+Oil" alt="Herbal Oil">
+      <h2>Herbal Ayurvedic Oil</h2>
+      <p>Price: ₹250</p>
+      <button class="order-btn" onclick="window.open('https://wa.me/918209105937?text=Hi%2C%20I%20want%20to%20order%20Herbal%20Ayurvedic%20Oil')">Order on WhatsApp</button>
+      <br>
+      <a href="upi://pay?pa=8209105937@ybl&pn=Gagan%20Gahlot&cu=INR" class="order-btn" style="background:#4caf50;">Pay via UPI</a>
     </div>
+  </div>
 
-    <!-- Product 2 -->
-    <div class="product-card">
-      <img src="https://via.placeholder.com/300x180?text=Product+2" alt="Product 2" class="product-image" />
-      <div class="product-details">
-        <div>
-          <h2 class="product-name">Organic Turmeric Powder</h2>
-          <p class="product-price">₹180</p>
-          <p class="product-description">Fresh, organic turmeric powder sourced directly from Rajasthan farms.</p>
-        </div>
-        <a href="tel:+918209105937" class="order-btn">Order Now</a>
-      </div>
-    </div>
-
-    <!-- Product 3 -->
-    <div class="product-card">
-      <img src="https://via.placeholder.com/300x180?text=Product+3" alt="Product 3" class="product-image" />
-      <div class="product-details">
-        <div>
-          <h2 class="product-name">Natural Herbal Tea</h2>
-          <p class="product-price">₹150</p>
-          <p class="product-description">A calming blend of herbs and spices to refresh your mind and body.</p>
-        </div>
-        <a href="tel:+918209105937" class="order-btn">Order Now</a>
-      </div>
-    </div>
-
-    <!-- Product 4 -->
-    <div class="product-card">
-      <img src="https://via.placeholder.com/300x180?text=Product+4" alt="Product 4" class="product-image" />
-      <div class="product-details">
-        <div>
-          <h2 class="product-name">Beawar Special Churan</h2>
-          <p class="product-price">₹120</p>
-          <p class="product-description">Traditional digestive churan made with pure ingredients and herbs.</p>
-        </div>
-        <a href="tel:+918209105937" class="order-btn">Order Now</a>
-      </div>
-    </div>
-
-  </main>
+  <div class="qr-section">
+    <h2>Scan & Pay</h2>
+    <p>UPI ID: <strong>8209105937@ybl</strong></p>
+    <img src="assets/qr-payment.jpg" alt="UPI QR Code">
+    <br>
+    <a href="upi://pay?pa=8209105937@ybl&pn=Gagan%20Gahlot&cu=INR">Click to Pay via UPI</a>
+  </div>
 </body>
 </html>
