@@ -19,13 +19,13 @@
     }
 
     header {
+      background: linear-gradient(to right, #1e88e5, #42a5f5);
+      padding: 20px 40px;
+      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      background: linear-gradient(to right, #1e88e5, #42a5f5);
-      padding: 20px 40px;
-      color: white;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
@@ -52,38 +52,6 @@
     nav a:hover {
       text-decoration: underline;
       color: #e3f2fd;
-    }
-
-    /* HACK Button Styling */
-    .hack-button {
-      background-color: red;
-      color: white;
-      font-weight: bold;
-      padding: 10px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      margin-left: 20px;
-      align-self: center;
-      box-shadow: 0 0 10px red;
-      animation: blink 1.2s infinite;
-      transition: transform 0.2s ease;
-    }
-    .hack-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px 3px red;
-    }
-
-    @keyframes blink {
-      0%, 50%, 100% {
-        opacity: 1;
-        box-shadow: 0 0 10px red;
-      }
-      25%, 75% {
-        opacity: 0.6;
-        box-shadow: 0 0 20px 5px red;
-      }
     }
 
     .hero {
@@ -198,8 +166,6 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <!-- HACK Button -->
-    <a href="hacking.html" target="_blank" class="hack-button" title="Open Hacking Mode">HACK</a>
   </header>
 
   <!-- Hero Section -->
