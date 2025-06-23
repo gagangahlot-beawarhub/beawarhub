@@ -76,10 +76,14 @@
       const id = document.getElementById('userid').value;
       const pass = document.getElementById('password').value;
 
+      console.log("Login attempt with ID:", id, "Password:", pass);
+
       if (id === "8209105937" && pass === "g1a2g3a4n5") {
+        console.log("Login successful! Redirecting to dashboard...");
         window.location.href = "dashboard.html";
       } else {
         alert("Wrong ID or Password!");
+        console.log("Login failed!");
       }
     }
     
