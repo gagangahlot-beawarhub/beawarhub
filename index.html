@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BeawarHub - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <title>BeawarHub - Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -14,78 +14,123 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f6f8;
+      background: #f4f6f8;
       color: #333;
     }
 
     header {
-      background-color: #1e88e5;
+      background: linear-gradient(to right, #1e88e5, #42a5f5);
       padding: 20px 40px;
       color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
       font-size: 28px;
+      font-weight: 600;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
+      margin-left: 25px;
       font-weight: 500;
       font-size: 16px;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
       text-decoration: underline;
+      color: #e3f2fd;
     }
 
     .hero {
       text-align: center;
-      padding: 80px 20px;
+      padding: 100px 20px 60px;
       background: linear-gradient(to right, #2196f3, #21cbf3);
       color: white;
+      animation: fadeSlide 1.5s ease-out;
+    }
+
+    @keyframes fadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero h2 {
-      font-size: 36px;
+      font-size: 40px;
       margin-bottom: 20px;
+      animation: fadeSlide 1.8s ease-out;
     }
 
     .hero p {
       font-size: 18px;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
+      line-height: 1.6;
+      animation: fadeSlide 2.2s ease-out;
     }
 
-    .content {
-      padding: 60px 20px;
+    .info {
+      padding: 60px 30px;
+      background: #fff;
       text-align: center;
     }
 
-    .content h3 {
-      font-size: 24px;
-      margin-bottom: 20px;
+    .info h3 {
+      font-size: 28px;
       color: #1e88e5;
+      margin-bottom: 20px;
     }
 
-    .content p {
+    .info p {
+      max-width: 800px;
+      margin: auto;
       font-size: 16px;
-      max-width: 700px;
-      margin: 0 auto;
+      line-height: 1.7;
+      color: #444;
     }
 
     footer {
       background-color: #1e88e5;
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 60px;
+      padding: 25px 15px;
       font-size: 14px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+
+      .hero h2 {
+        font-size: 30px;
+      }
+
+      .info h3 {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
@@ -103,21 +148,23 @@
   <!-- Hero Section -->
   <section class="hero">
     <h2>Welcome to BeawarHub</h2>
-    <p>A digital platform to explore the best of Beawar — places, updates, markets, and more.</p>
+    <p>Explore Beawar digitally — Discover culture, places, markets & more at your fingertips.</p>
   </section>
 
-  <!-- Main Content -->
-  <section class="content">
-    <h3>Explore Beawar</h3>
+  <!-- Beawar Info Section -->
+  <section class="info">
+    <h3>About Beawar, Rajasthan</h3>
     <p>
-      BeawarHub aapko deta hai ek digital jhalak Beawar shehar ki — yahan ke popular areas, markets, 
-      shops, photos, aur local updates. Aap Beawar se related har zaroori info yahin se dekh sakte hain.
+      Beawar is a vibrant city located in the Ajmer district of Rajasthan. Known for its rich heritage, bustling markets,
+      and cultural harmony, Beawar is a hub for trade and tourism. Popular areas include Ajmer Road, Chavni, Dungri, 
+      Mevadi Gate, and Surajpol. With landmarks like Prabhu Ki Bagiya and local bazaars full of color and energy, 
+      Beawar offers a unique blend of tradition and progress. BeawarHub is your digital gateway to this beautiful city.
     </p>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 BeawarHub | Designed by Gagan Gahlot with 💙
+    &copy; 2025 BeawarHub | Made with ❤️ by Gagan Gahlot & Chotu G
   </footer>
 
 </body>
