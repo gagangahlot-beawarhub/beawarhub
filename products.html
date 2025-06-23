@@ -8,155 +8,187 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      background: #f9fafd;
       margin: 0;
-      padding: 0;
-      background-color: #f5f7fa;
+      padding: 20px;
       color: #333;
     }
-
     header {
-      background-color: #1e88e5;
+      background: #1e88e5;
       padding: 20px 40px;
       color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    h2 {
       text-align: center;
-      color: #1e88e5;
-      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-
-    .product {
-      border-bottom: 1px solid #ddd;
-      padding: 16px 0;
-    }
-
-    .product:last-child {
-      border-bottom: none;
-    }
-
-    .product h3 {
+    header h1 {
       margin: 0;
-      color: #333;
-      font-size: 20px;
+      font-weight: 600;
+      font-size: 28px;
     }
-
-    .product p {
-      margin: 6px 0;
-      font-size: 15px;
-      color: #555;
-    }
-
-    .contact-info {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #1e88e5;
-    }
-
-    .contact-info a {
+    a.back-link {
+      display: inline-block;
+      margin: 15px 40px;
       color: #1e88e5;
       text-decoration: none;
       font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    a.back-link:hover {
+      color: #005bb5;
     }
 
-    .contact-info a:hover {
-      text-decoration: underline;
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+      gap: 25px;
+      padding: 0 20px;
     }
 
-    footer {
-      background-color: #1e88e5;
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .product-details {
+      padding: 15px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #1e88e5;
+    }
+
+    .product-price {
+      font-weight: 600;
+      font-size: 16px;
+      color: #388e3c;
+      margin-bottom: 12px;
+    }
+
+    .product-description {
+      font-size: 14px;
+      color: #555;
+      flex-grow: 1;
+      margin-bottom: 15px;
+    }
+
+    .order-btn {
+      align-self: flex-start;
+      background: #1e88e5;
       color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 60px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    .order-btn:hover {
+      background: #0d5ec9;
+    }
+
+    @media(max-width: 600px) {
+      .products-container {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+      }
+      header h1 {
+        font-size: 24px;
+      }
+      a.back-link {
+        margin: 12px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
-    <h1>BeawarHub</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="map.html">Map</a>
-      <a href="markets.html">Markets</a>
-      <a href="products.html">Products</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <h1>BeawarHub Products</h1>
   </header>
 
-  <!-- Product List -->
-  <div class="container">
-    <h2>Available Products & Offers</h2>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
 
-    <div class="product">
-      <h3>Shree Ayurvedic Hair Oil</h3>
-      <p><strong>Price:</strong> ₹120 per bottle</p>
-      <p>Pure herbal oil for hair growth, dandruff removal, and scalp nourishment.</p>
-      <div class="contact-info">
-        Contact: Gagan Gahlot —  
-        <a href="tel:+918209105937">+91 82091 05937</a> | 
-        <a href="https://wa.me/918209105937" target="_blank" rel="noopener">WhatsApp</a> | 
-        <a href="mailto:gagangahlot65@gmail.com">gagangahlot65@gmail.com</a>
+  <main class="products-container">
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x180?text=Product+1" alt="Product 1" class="product-image" />
+      <div class="product-details">
+        <div>
+          <h2 class="product-name">Ayurvedic Herbal Oil</h2>
+          <p class="product-price">₹250</p>
+          <p class="product-description">Natural herbal oil for skin nourishment and hair health. Pure & chemical-free.</p>
+        </div>
+        <a href="tel:+918209105937" class="order-btn">Order Now</a>
       </div>
     </div>
 
-    <div class="product">
-      <h3>Herbal Immunity Booster</h3>
-      <p><strong>Price:</strong> ₹90 for 100g</p>
-      <p>Daily use powder for increasing body immunity. Safe & natural.</p>
-      <div class="contact-info">
-        Contact: Gagan Gahlot —  
-        <a href="tel:+918209105937">+91 82091 05937</a> | 
-        <a href="https://wa.me/918209105937" target="_blank" rel="noopener">WhatsApp</a> | 
-        <a href="mailto:gagangahlot65@gmail.com">gagangahlot65@gmail.com</a>
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x180?text=Product+2" alt="Product 2" class="product-image" />
+      <div class="product-details">
+        <div>
+          <h2 class="product-name">Organic Turmeric Powder</h2>
+          <p class="product-price">₹180</p>
+          <p class="product-description">Fresh, organic turmeric powder sourced directly from Rajasthan farms.</p>
+        </div>
+        <a href="tel:+918209105937" class="order-btn">Order Now</a>
       </div>
     </div>
 
-    <div class="product">
-      <h3>Pain Relief Balm (Local Made)</h3>
-      <p><strong>Price:</strong> ₹60</p>
-      <p>Works effectively on joint pain, muscle pain, and headaches.</p>
-      <div class="contact-info">
-        Contact: Gagan Gahlot —  
-        <a href="tel:+918209105937">+91 82091 05937</a> | 
-        <a href="https://wa.me/918209105937" target="_blank" rel="noopener">WhatsApp</a> | 
-        <a href="mailto:gagangahlot65@gmail.com">gagangahlot65@gmail.com</a>
+    <!-- Product 3 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x180?text=Product+3" alt="Product 3" class="product-image" />
+      <div class="product-details">
+        <div>
+          <h2 class="product-name">Natural Herbal Tea</h2>
+          <p class="product-price">₹150</p>
+          <p class="product-description">A calming blend of herbs and spices to refresh your mind and body.</p>
+        </div>
+        <a href="tel:+918209105937" class="order-btn">Order Now</a>
       </div>
     </div>
 
-  </div>
+    <!-- Product 4 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x180?text=Product+4" alt="Product 4" class="product-image" />
+      <div class="product-details">
+        <div>
+          <h2 class="product-name">Beawar Special Churan</h2>
+          <p class="product-price">₹120</p>
+          <p class="product-description">Traditional digestive churan made with pure ingredients and herbs.</p>
+        </div>
+        <a href="tel:+918209105937" class="order-btn">Order Now</a>
+      </div>
+    </div>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 BeawarHub | Powered by Gagan Gahlot & Chotu G
-  </footer>
-
+  </main>
 </body>
 </html>
