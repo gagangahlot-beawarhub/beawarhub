@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products - BeawarHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-red-800 text-white py-4 shadow">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">BeawarHub</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="gallery.html" class="hover:underline">Gallery</a>
+        <a href="sell.html" class="hover:underline">Sell</a>
+        <a href="products.html" class="underline font-semibold">Products</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Products Grid -->
+  <section class="py-10 max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">🛍 Beawar Market Products</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Product 1 -->
+      <div class="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden">
+        <img src="images/hingoli.jpg" alt="Hingoli" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-gray-800">Hingoli (100g)</h3>
+          <p class="text-sm text-gray-600 mt-1">Local Ayurvedic Digestive</p>
+          <p class="text-red-700 font-bold mt-2">₹25</p>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden">
+        <img src="images/ayurvedic-oil.jpg" alt="Ayurvedic Oil" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-gray-800">Ayurvedic Hair Oil</h3>
+          <p class="text-sm text-gray-600 mt-1">Promotes growth & shine</p>
+          <p class="text-red-700 font-bold mt-2">₹199</p>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden">
+        <img src="images/rajasthani-art.jpg" alt="Rajasthani Art" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-gray-800">Rajasthani Wall Art</h3>
+          <p class="text-sm text-gray-600 mt-1">Handmade art piece (wood)</p>
+          <p class="text-red-700 font-bold mt-2">₹350</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-red-800 text-white text-center py-4 mt-10">
+    © 2025 BeawarHub. Powered by Beawar's Local Market.
+  </footer>
+
+</body>
+</html>
