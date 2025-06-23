@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BeawarHub Hacking Mode</title>
+<title>BeawarHub Ultimate Hacking Mode</title>
 <style>
   /* Reset */
   * {
@@ -120,6 +120,120 @@
     100% {opacity: 0;}
   }
 
+  /* Typing Console Box */
+  #console {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 30vh;
+    background: rgba(0,0,0,0.85);
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 10px 15px;
+    overflow-y: auto;
+    border-top: 2px solid #00ff00;
+    z-index: 15;
+    box-shadow: inset 0 0 10px #00ff00;
+    user-select: none;
+  }
+
+  /* Screen Shake Animation */
+  .shake {
+    animation: shakeAnim 0.4s;
+  }
+
+  @keyframes shakeAnim {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(5px, -5px); }
+    60% { transform: translate(-5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  /* Red flash overlay */
+  #redFlash {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255,0,0,0.25);
+    opacity: 0;
+    z-index: 25;
+    animation: redFlashAnim 0.5s ease forwards;
+  }
+
+  @keyframes redFlashAnim {
+    0% {opacity: 0;}
+    50% {opacity: 0.6;}
+    100% {opacity: 0;}
+  }
+
+  /* Download Progress Bar */
+  #downloadBarContainer {
+    position: fixed;
+    bottom: 40vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    background: #222;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 30;
+    display: none;
+  }
+  #downloadBar {
+    height: 20px;
+    background: linear-gradient(90deg, #00ff00 0%, #33ff33 50%, #00ff00 100%);
+    width: 0%;
+    animation: progressAnim 3s linear forwards;
+  }
+  @keyframes progressAnim {
+    0% {width: 0%;}
+    100% {width: 100%;}
+  }
+
+  /* SYSTEM FAILURE Overlay */
+  #systemFail {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: black;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+  #systemFail.show {
+    opacity: 1;
+    pointer-events: all;
+    animation: flicker 1.5s infinite;
+  }
+  @keyframes flicker {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0.4;}
+  }
+
+  /* Dead Text Flicker */
+  .dead-text {
+    color: red;
+    font-size: 3rem;
+    animation: flicker 1.2s infinite;
+    margin-top: 20px;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
@@ -129,9 +243,33 @@
 <h1 class="glitch" data-text="BEAWARHUB HACKING MODE">BEAWARHUB HACKING MODE</h1>
 <div class="info">Press any key to generate more code...</div>
 
+<!-- Typing Console -->
+<div id="console"></div>
+
+<!-- Red Flash Overlay -->
+<div id="redFlash" style="display:none;"></div>
+
+<!-- Download Progress Bar -->
+<div id="downloadBarContainer">
+  <div id="downloadBar"></div>
+</div>
+
+<!-- SYSTEM FAILURE Overlay -->
+<div id="systemFail">
+  SYSTEM FAILURE
+  <div class="dead-text">☠️ DEAD ☠️</div>
+  <div class="dead-text" style="font-size:2rem; margin-top:10px;">REBOOTING SYSTEM...</div>
+</div>
+
 <script>
   const canvas = document.getElementById('matrix');
   const ctx = canvas.getContext('2d');
+  const consoleDiv = document.getElementById('console');
+  const redFlash = document.getElementById('redFlash');
+  const downloadBarContainer = document.getElementById('downloadBarContainer');
+  const downloadBar = document.getElementById('downloadBar');
+  const systemFail = document.getElementById('systemFail');
+  const body = document.body;
 
   let width = canvas.width = window.innerWidth;
   let height = canvas.height = window.innerHeight;
@@ -146,6 +284,7 @@
 
   const letters = '01';
 
+  // Matrix rain animation
   function draw() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
     ctx.fillRect(0, 0, width, height);
@@ -169,6 +308,7 @@
 
   draw();
 
+  // Regenerate drops on key press
   function regenDrops() {
     for(let i = 0; i < drops.length; i++) {
       drops[i] = Math.random() * height;
@@ -177,10 +317,10 @@
 
   window.addEventListener('keydown', () => {
     regenDrops();
+    addConsoleLine(getRandomCommand());
   });
 
-  // ALERT MESSAGES SECTION
-
+  // ALERT MESSAGES
   const alerts = [
     "⚠️ FILE DOWNLOADING...",
     "⚠️ HACK IN PROGRESS",
@@ -198,7 +338,16 @@
     alertDiv.textContent = alerts[Math.floor(Math.random() * alerts.length)];
     document.body.appendChild(alertDiv);
 
-    // Remove after animation ends (4s)
+    // Show red flash + shake with some alerts
+    redFlash.style.display = 'block';
+    redFlash.style.animation = 'redFlashAnim 0.5s ease forwards';
+    body.classList.add('shake');
+    setTimeout(() => {
+      body.classList.remove('shake');
+      redFlash.style.display = 'none';
+    }, 500);
+
+    // Remove alert after 4 seconds
     setTimeout(() => {
       alertDiv.remove();
     }, 4000);
@@ -206,7 +355,7 @@
 
   // Show alert randomly every 5-12 seconds
   function randomAlert() {
-    const randomTime = Math.random() * 7000 + 5000; // 5000ms to 12000ms
+    const randomTime = Math.random() * 7000 + 5000;
     setTimeout(() => {
       showAlert();
       randomAlert();
@@ -215,11 +364,99 @@
 
   randomAlert();
 
+  // Typing Console Logic
+  const fakeCommands = [
+    "CONNECTING TO SERVER 192.168.1.1...",
+    "AUTHENTICATING ACCESS...",
+    "PASSWORD ACCEPTED",
+    "EXTRACTING DATA...",
+    "DOWNLOADING FILES...",
+    "INJECTING MALWARE...",
+    "OVERRIDING FIREWALL...",
+    "ACCESS GRANTED TO ROOT",
+    "ENABLING BACKDOOR...",
+    "ERASING LOGS...",
+    "SYSTEMS COMPROMISED",
+    "BRUTE FORCE ATTACK IN PROGRESS",
+    "SPOOFING IP ADDRESS...",
+    "DEPLOYING TROJAN...",
+    "RUNNING SQL INJECTION...",
+    "CLOSING CONNECTION...",
+    "FIREWALL BYPASSED",
+    "DATA ENCRYPTED",
+    "UPLOAD COMPLETE",
+    "REBOOTING SERVER...",
+  ];
+
+  function getRandomCommand() {
+    return fakeCommands[Math.floor(Math.random() * fakeCommands.length)];
+  }
+
+  function addConsoleLine(text) {
+    const line = document.createElement('div');
+    line.textContent = text;
+    consoleDiv.appendChild(line);
+    consoleDiv.scrollTop = consoleDiv.scrollHeight;
+  }
+
+  // Add some initial lines
+  for(let i=0; i<10; i++) {
+    addConsoleLine(getRandomCommand());
+  }
+
+  // DOWNLOAD PROGRESS BAR LOGIC
+  function startDownloadAnimation() {
+    downloadBarContainer.style.display = 'block';
+    downloadBar.style.width = '0%';
+    downloadBar.style.animation = 'none';
+    // Force reflow to restart animation
+    void downloadBar.offsetWidth;
+    downloadBar.style.animation = 'progressAnim 3s linear forwards';
+
+    // When animation ends hide bar
+    setTimeout(() => {
+      downloadBarContainer.style.display = 'none';
+      addConsoleLine("DOWNLOAD COMPLETE ✔️");
+    }, 3000);
+  }
+
+  // SYSTEM FAILURE EFFECT (dead screen)
+  function showSystemFailure() {
+    systemFail.classList.add('show');
+    addConsoleLine("!!! SYSTEM FAILURE DETECTED !!!");
+    setTimeout(() => {
+      systemFail.classList.remove('show');
+      addConsoleLine("SYSTEM REBOOTING...");
+    }, 6000);
+  }
+
+  // Randomly trigger download and failure animations for max effect
+  function randomSpecialEffects() {
+    const rand = Math.random();
+    if(rand < 0.3) {
+      startDownloadAnimation();
+    } else if(rand < 0.5) {
+      showSystemFailure();
+    }
+  }
+
+  // Trigger special effects randomly every 20-35 seconds
+  function scheduleSpecialEffects() {
+    const time = Math.random() * 15000 + 20000;
+    setTimeout(() => {
+      randomSpecialEffects();
+      scheduleSpecialEffects();
+    }, time);
+  }
+
+  scheduleSpecialEffects();
+
+  // Resize handler
   window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
   });
-</script>
 
+</script>
 </body>
 </html>
