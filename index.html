@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Age Calculator</title>
+    
+    <title>Pro Age Calculator By Gagan - Calculate Exact Age Online</title>
+    <meta name="description" content="Gagan's Pro Age Calculator. Apni sahi umar saal, mahine, din, hours aur seconds mein jaanein. Best tool for quick age calculation.">
+    <meta name="keywords" content="Age Calculator Gagan, Age Calculator Beawar, Online Age Tool, Birthday Calculator, Exact Age in Seconds">
+    <meta name="author" content="Gagan">
+
+    <meta property="og:title" content="Pro Age Calculator By Gagan">
+    <meta property="og:description" content="Check your exact age in years, months, days, and even seconds!">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary: #4834d4;
+            --secondary: #686de0;
             --accent: #be2edd;
-            --bg: #f0f2f5;
+            --text-dark: #2d3436;
+            --bg-light: #f9f9f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #686de0, #4834d4);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,37 +39,56 @@
             padding: 20px;
         }
 
-        .container {
+        /* Container Animation */
+        .calculator-card {
             background: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             width: 100%;
             max-width: 500px;
-            animation: slideUp 0.6s ease-out;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h2 { text-align: center; color: var(--primary); margin-bottom: 25px; }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 26px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
 
-        .input-box { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; color: #444; }
-        
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+
         input[type="date"] {
             width: 100%;
             padding: 12px;
             border: 2px solid #ddd;
             border-radius: 10px;
+            outline: none;
             font-size: 16px;
-            box-sizing: border-box;
-            transition: 0.3s;
+            transition: all 0.3s;
         }
 
-        input[type="date"]:focus { border-color: var(--primary); outline: none; }
+        input[type="date"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(72, 52, 212, 0.2);
+        }
 
         button {
             width: 100%;
@@ -62,142 +98,194 @@
             border: none;
             border-radius: 10px;
             font-size: 18px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(72, 52, 212, 0.3);
         }
 
-        button:hover { background: var(--accent); transform: scale(1.02); }
+        button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
 
-        .results-grid {
-            margin-top: 25px;
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Results Styling */
+        .results-container {
+            display: none;
+            margin-top: 30px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; scale: 0.9; }
+            to { opacity: 1; scale: 1; }
+        }
+
+        .main-result {
+            background: #eef2ff;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-left: 6px solid var(--primary);
+        }
+
+        .main-result h2 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--primary);
+        }
+
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            display: none; /* Hidden until calc */
+            gap: 12px;
         }
 
-        .result-card {
+        .stat-box {
             background: #f8f9fa;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             text-align: center;
-            border-left: 5px solid var(--primary);
+            border: 1px solid #eee;
         }
 
-        .result-card h3 { margin: 0; font-size: 14px; color: #666; }
-        .result-card p { margin: 5px 0 0; font-size: 18px; font-weight: bold; color: var(--primary); }
+        .stat-box span {
+            display: block;
+            font-size: 12px;
+            color: #777;
+            text-transform: uppercase;
+        }
 
-        .full-width { grid-column: span 2; background: #eef2ff; }
+        .stat-box p {
+            margin: 5px 0 0;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #888;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>⏳ Pro Age Calculator</h2>
-    
-    <div class="input-box">
-        <label>Date of Birth</label>
-        <input type="date" id="dob">
+    <div class="calculator-card">
+        <h1>✨ Pro Age Calculator</h1>
+        
+        <div class="input-group">
+            <label>Select Date of Birth</label>
+            <input type="date" id="dob">
+        </div>
+
+        <div class="input-group">
+            <label>Calculate Age as of (Present Date)</label>
+            <input type="date" id="targetDate">
+        </div>
+
+        <button onclick="calculateAge()">Calculate Now</button>
+
+        <div class="results-container" id="results">
+            <div class="main-result">
+                <span>Exact Age</span>
+                <h2 id="standardAge">-</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span>Total Months</span>
+                    <p id="tMonths">-</p>
+                </div>
+                <div class="stat-box">
+                    <span>Total Weeks</span>
+                    <p id="tWeeks">-</p>
+                </div>
+                <div class="stat-box">
+                    <span>Total Days</span>
+                    <p id="tDays">-</p>
+                </div>
+                <div class="stat-box">
+                    <span>Total Hours</span>
+                    <p id="tHours">-</p>
+                </div>
+                <div class="stat-box">
+                    <span>Total Minutes</span>
+                    <p id="tMinutes">-</p>
+                </div>
+                <div class="stat-box">
+                    <span>Total Seconds</span>
+                    <p id="tSeconds">-</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>Developed by Gagan</footer>
     </div>
 
-    <div class="input-box">
-        <label>Present/Target Date</label>
-        <input type="date" id="nowDate">
-    </div>
+    <script>
+        // Set default date to today
+        document.getElementById('targetDate').valueAsDate = new Date();
 
-    <button onclick="calculateEverything()">Calculate Detail</button>
+        function calculateAge() {
+            const dobInput = document.getElementById('dob').value;
+            const targetInput = document.getElementById('targetDate').value;
 
-    <div class="results-grid" id="resultsGrid">
-        <div class="result-card full-width">
-            <h3>Standard Age</h3>
-            <p id="standardAge">-</p>
-        </div>
-        <div class="result-card">
-            <h3>Total Months</h3>
-            <p id="totalMonths">-</p>
-        </div>
-        <div class="result-card">
-            <h3>Total Weeks</h3>
-            <p id="totalWeeks">-</p>
-        </div>
-        <div class="result-card">
-            <h3>Total Days</h3>
-            <p id="totalDays">-</p>
-        </div>
-        <div class="result-card">
-            <h3>Total Hours</h3>
-            <p id="totalHours">-</p>
-        </div>
-        <div class="result-card">
-            <h3>Total Minutes</h3>
-            <p id="totalMinutes">-</p>
-        </div>
-        <div class="result-card">
-            <h3>Total Seconds</h3>
-            <p id="totalSeconds">-</p>
-        </div>
-    </div>
-</div>
+            if (!dobInput || !targetInput) {
+                alert("Pahle dates select karein!");
+                return;
+            }
 
-<script>
-    // Set today's date as default in the second input
-    document.getElementById('nowDate').valueAsDate = new Date();
+            const dob = new Date(dobInput);
+            const target = new Date(targetInput);
 
-    function calculateEverything() {
-        const dobVal = document.getElementById('dob').value;
-        const nowVal = document.getElementById('nowDate').value;
+            if (dob > target) {
+                alert("Birth date, present date se badi nahi ho sakti!");
+                return;
+            }
 
-        if (!dobVal || !nowVal) {
-            alert("Please select both dates!");
-            return;
+            // Standard Age Logic
+            let years = target.getFullYear() - dob.getFullYear();
+            let months = target.getMonth() - dob.getMonth();
+            let days = target.getDate() - dob.getDate();
+
+            if (months < 0 || (months === 0 && days < 0)) {
+                years--;
+                months += 12;
+            }
+            if (days < 0) {
+                const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0);
+                days += prevMonth.getDate();
+                months--;
+            }
+
+            // Math Logic
+            const diffMs = target - dob;
+            const totalSecs = Math.floor(diffMs / 1000);
+            const totalMins = Math.floor(totalSecs / 60);
+            const totalHrs = Math.floor(totalMins / 60);
+            const totalDays = Math.floor(totalHrs / 24);
+            const totalWeeks = Math.floor(totalDays / 7);
+            const totalMonthsAll = (years * 12) + months;
+
+            // Display Results
+            document.getElementById('standardAge').innerText = `${years} Years, ${months} Months, ${days} Days`;
+            document.getElementById('tMonths').innerText = totalMonthsAll.toLocaleString();
+            document.getElementById('tWeeks').innerText = totalWeeks.toLocaleString();
+            document.getElementById('tDays').innerText = totalDays.toLocaleString();
+            document.getElementById('tHours').innerText = totalHrs.toLocaleString();
+            document.getElementById('tMinutes').innerText = totalMins.toLocaleString();
+            document.getElementById('tSeconds').innerText = totalSecs.toLocaleString();
+
+            document.getElementById('results').style.display = 'block';
         }
-
-        const dob = new Date(dobVal);
-        const now = new Date(nowVal);
-
-        if (dob > now) {
-            alert("Birth date cannot be in the future!");
-            return;
-        }
-
-        // 1. Standard Age (Y, M, D)
-        let years = now.getFullYear() - dob.getFullYear();
-        let months = now.getMonth() - dob.getMonth();
-        let days = now.getDate() - dob.getDate();
-
-        if (months < 0 || (months === 0 && days < 0)) {
-            years--;
-            months += 12;
-        }
-        if (days < 0) {
-            const daysInLastMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-            days += daysInLastMonth;
-            months--;
-        }
-
-        // 2. Mathematical Calculations
-        const diffInMs = now - dob;
-        const totalSeconds = Math.floor(diffInMs / 1000);
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        const totalHours = Math.floor(totalMinutes / 60);
-        const totalDays = Math.floor(totalHours / 24);
-        const totalWeeks = Math.floor(totalDays / 7);
-        const totalMonthsAll = (years * 12) + months;
-
-        // Displaying results
-        document.getElementById('standardAge').innerText = `${years} Y, ${months} M, ${days} D`;
-        document.getElementById('totalMonths').innerText = totalMonthsAll.toLocaleString();
-        document.getElementById('totalWeeks').innerText = totalWeeks.toLocaleString();
-        document.getElementById('totalDays').innerText = totalDays.toLocaleString();
-        document.getElementById('totalHours').innerText = totalHours.toLocaleString();
-        document.getElementById('totalMinutes').innerText = totalMinutes.toLocaleString();
-        document.getElementById('totalSeconds').innerText = totalSeconds.toLocaleString();
-
-        document.getElementById('resultsGrid').style.display = 'grid';
-    }
-</script>
-
+    </script>
 </body>
 </html>
