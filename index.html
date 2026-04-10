@@ -3,166 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Age Calculator</title>
+    <title>Advanced Age Calculator</title>
     <style>
         :root {
-            --primary-color: #6c5ce7;
-            --secondary-color: #a29bfe;
-            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary: #4834d4;
+            --accent: #be2edd;
+            --bg: #f0f2f5;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-gradient);
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #686de0, #4834d4);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
-            color: #2d3436;
+            padding: 20px;
         }
 
-        /* Container Animation */
-        .calculator-card {
-            background: rgba(255, 255, 255, 0.95);
+        .container {
+            background: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-            animation: fadeIn 0.8s ease-out;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+            animation: slideUp 0.6s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .calculator-card:hover {
-            transform: translateY(-5px);
-        }
+        h2 { text-align: center; color: var(--primary); margin-bottom: 25px; }
 
-        h2 {
-            margin-bottom: 25px;
-            color: var(--primary-color);
-            font-size: 24px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #636e72;
-        }
-
-        /* Styled Date Input */
+        .input-box { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #444; }
+        
         input[type="date"] {
             width: 100%;
             padding: 12px;
-            border: 2px solid #dfe6e9;
+            border: 2px solid #ddd;
             border-radius: 10px;
-            outline: none;
-            transition: border-color 0.3s;
             font-size: 16px;
             box-sizing: border-box;
+            transition: 0.3s;
         }
 
-        input[type="date"]:focus {
-            border-color: var(--primary-color);
-        }
+        input[type="date"]:focus { border-color: var(--primary); outline: none; }
 
-        /* Animated Button */
         button {
             width: 100%;
             padding: 15px;
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
             border: none;
             border-radius: 10px;
             font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
-
-        button:hover {
-            background: #5b4bc4;
-            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
-        }
-
-        /* Result Animation */
-        #result {
-            margin-top: 25px;
-            padding: 15px;
-            border-radius: 10px;
-            display: none; /* Initially hidden */
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .result-item {
-            display: block;
-            font-size: 18px;
-            margin: 5px 0;
-        }
-
-        .highlight {
-            color: var(--primary-color);
             font-weight: bold;
-            font-size: 22px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
         }
+
+        button:hover { background: var(--accent); transform: scale(1.02); }
+
+        .results-grid {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            display: none; /* Hidden until calc */
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 5px solid var(--primary);
+        }
+
+        .result-card h3 { margin: 0; font-size: 14px; color: #666; }
+        .result-card p { margin: 5px 0 0; font-size: 18px; font-weight: bold; color: var(--primary); }
+
+        .full-width { grid-column: span 2; background: #eef2ff; }
     </style>
 </head>
 <body>
 
-<div class="calculator-card">
-    <h2>✨ Age Calculator</h2>
+<div class="container">
+    <h2>⏳ Pro Age Calculator</h2>
     
-    <div class="input-group">
-        <label for="dob">Select Birth Date</label>
+    <div class="input-box">
+        <label>Date of Birth</label>
         <input type="date" id="dob">
     </div>
 
-    <button onclick="calculateAge()">Calculate Now</button>
+    <div class="input-box">
+        <label>Present/Target Date</label>
+        <input type="date" id="nowDate">
+    </div>
 
-    <div id="result">
-        <span class="result-item">You are</span>
-        <div id="age-text" class="highlight"></div>
-        <span class="result-item">old today!</span>
+    <button onclick="calculateEverything()">Calculate Detail</button>
+
+    <div class="results-grid" id="resultsGrid">
+        <div class="result-card full-width">
+            <h3>Standard Age</h3>
+            <p id="standardAge">-</p>
+        </div>
+        <div class="result-card">
+            <h3>Total Months</h3>
+            <p id="totalMonths">-</p>
+        </div>
+        <div class="result-card">
+            <h3>Total Weeks</h3>
+            <p id="totalWeeks">-</p>
+        </div>
+        <div class="result-card">
+            <h3>Total Days</h3>
+            <p id="totalDays">-</p>
+        </div>
+        <div class="result-card">
+            <h3>Total Hours</h3>
+            <p id="totalHours">-</p>
+        </div>
+        <div class="result-card">
+            <h3>Total Minutes</h3>
+            <p id="totalMinutes">-</p>
+        </div>
+        <div class="result-card">
+            <h3>Total Seconds</h3>
+            <p id="totalSeconds">-</p>
+        </div>
     </div>
 </div>
 
 <script>
-    function calculateAge() {
-        const dobValue = document.getElementById('dob').value;
-        const resultDiv = document.getElementById('result');
-        const ageText = document.getElementById('age-text');
+    // Set today's date as default in the second input
+    document.getElementById('nowDate').valueAsDate = new Date();
 
-        if (!dobValue) {
-            alert("Please select your birthday!");
+    function calculateEverything() {
+        const dobVal = document.getElementById('dob').value;
+        const nowVal = document.getElementById('nowDate').value;
+
+        if (!dobVal || !nowVal) {
+            alert("Please select both dates!");
             return;
         }
 
-        const dob = new Date(dobValue);
-        const now = new Date();
+        const dob = new Date(dobVal);
+        const now = new Date(nowVal);
 
+        if (dob > now) {
+            alert("Birth date cannot be in the future!");
+            return;
+        }
+
+        // 1. Standard Age (Y, M, D)
         let years = now.getFullYear() - dob.getFullYear();
         let months = now.getMonth() - dob.getMonth();
         let days = now.getDate() - dob.getDate();
@@ -172,15 +172,30 @@
             months += 12;
         }
         if (days < 0) {
-            const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-            days += prevMonth.getDate();
+            const daysInLastMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+            days += daysInLastMonth;
             months--;
         }
 
-        // Display result with animation
-        ageText.innerHTML = `${years} Years, ${months} Months, ${days} Days`;
-        resultDiv.style.display = 'block';
-        resultDiv.style.background = '#f0f3ff';
+        // 2. Mathematical Calculations
+        const diffInMs = now - dob;
+        const totalSeconds = Math.floor(diffInMs / 1000);
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        const totalHours = Math.floor(totalMinutes / 60);
+        const totalDays = Math.floor(totalHours / 24);
+        const totalWeeks = Math.floor(totalDays / 7);
+        const totalMonthsAll = (years * 12) + months;
+
+        // Displaying results
+        document.getElementById('standardAge').innerText = `${years} Y, ${months} M, ${days} D`;
+        document.getElementById('totalMonths').innerText = totalMonthsAll.toLocaleString();
+        document.getElementById('totalWeeks').innerText = totalWeeks.toLocaleString();
+        document.getElementById('totalDays').innerText = totalDays.toLocaleString();
+        document.getElementById('totalHours').innerText = totalHours.toLocaleString();
+        document.getElementById('totalMinutes').innerText = totalMinutes.toLocaleString();
+        document.getElementById('totalSeconds').innerText = totalSeconds.toLocaleString();
+
+        document.getElementById('resultsGrid').style.display = 'grid';
     }
 </script>
 
